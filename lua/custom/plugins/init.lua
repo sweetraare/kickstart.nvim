@@ -5,4 +5,31 @@
 
 ---@module 'lazy'
 ---@type LazySpec
-return {}
+return {
+  -- themes
+  'morhetz/gruvbox',
+  'gertjanreynaert/cobalt2-vim-theme',
+  'ap/vim-css-color',
+  'arcticicestudio/nord-vim',
+  'Badacadabra/vim-archery',
+  'gilgigilgil/anderson.vim',
+  'ajmwagar/vim-deus',
+  'cocopon/iceberg.vim',
+  'sainnhe/everforest',
+  'artanikin/vim-synthwave84',
+  { 'folke/tokyonight.nvim', branch = 'main' },
+  { 'catppuccin/vim', as = 'catppuccin' },
+  'rebelot/kanagawa.nvim',
+
+  'christoomey/vim-tmux-navigator',
+  'tpope/vim-commentary',
+  'tpope/vim-fugitive',
+  'tpope/vim-surround',
+  'folke/flash.nvim',
+  'mbbill/undotree',
+  'theprimeagen/harpoon',
+  'theprimeagen/refactoring.nvim',
+  'nvimdev/lspsaga.nvim',
+  'andymass/vim-matchup',
+  'ap/vim-css-color',
+}
