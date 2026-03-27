@@ -618,7 +618,20 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        ts_ls = {
+          on_attach = function(client, bufnr)
+            vim.keymap.set('n', 'gd', function()
+              local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+              client.request('typescript/goToSourceDefinition', params, function(err, result)
+                if err or not result or #result == 0 then
+                  vim.lsp.buf.definition()
+                  return
+                end
+                vim.lsp.util.jump_to_location(result[1], client.offset_encoding)
+              end, bufnr)
+            end, { buffer = bufnr, desc = 'Go to Source Definition (TS)' })
+          end,
+        },
         eslint = {},
         tailwindcss = {},
         stylua = {}, -- Used to format Lua code
@@ -771,6 +784,9 @@ require('lazy').setup({
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+
+        ['<Tab>'] = { 'accept', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps

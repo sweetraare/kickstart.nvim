@@ -29,7 +29,16 @@ return {
   'mbbill/undotree',
   'theprimeagen/harpoon',
   'theprimeagen/refactoring.nvim',
-  'nvimdev/lspsaga.nvim',
+  {
+    'nvimdev/lspsaga.nvim',
+    opts = {
+      ui = { border = 'rounded' },
+      code_action = {
+        show_server_name = true,
+        extend_gitsigns = false,
+      },
+    },
+  },
   'andymass/vim-matchup',
   'ap/vim-css-color',
 }

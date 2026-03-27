@@ -1,6 +1,3 @@
--- EasyMotion
-vim.api.nvim_set_keymap('n', '<Leader>s', '<Plug>(easymotion-s2)', {})
-
 -- NeoTree
 vim.keymap.set('n', '<Leader>nt', ':Neotree reveal<CR>', {})
 
@@ -23,10 +20,13 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true })
 
 -- move between diagnostics
 vim.keymap.set('n', '[[', function() vim.diagnostic.jump { count = -1 } end, { desc = 'Go to previous diagnostic' })
-vim.keymap.set('n', ']]', function() vim.diagnostic.jump { count = 1 } end, { desc = 'Go to next diagnostic' })
+vim.keymap.set('n', ']]', function()
+  vim.diagnostic.jump { count = 1 }
+  vim.cmd 'Lspsaga code_action'
+end, { desc = 'Go to next diagnostic and open code action' })
 
 -- Code action
-vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })
+vim.keymap.set('n', '<Leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = 'Code Action' })
 
 -- Telescope
 local builtin = require 'telescope.builtin'
