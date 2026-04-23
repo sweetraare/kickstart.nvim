@@ -37,8 +37,17 @@ return {
         show_server_name = true,
         extend_gitsigns = false,
       },
+      lightbulb = {
+        enable = false,
+      },
     },
   },
   'andymass/vim-matchup',
   'ap/vim-css-color',
+
+  {
+    'seblj/roslyn.nvim',
+    ft = 'cs',
+    opts = {},
+  },
 }
